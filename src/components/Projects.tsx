@@ -12,11 +12,12 @@ export default function Projects() {
         <RevealOnScroll className="max-w-2xl">
           <p className="section-label">Featured Work</p>
           <h2 className="font-display mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance md:text-4xl">
-            Case studies from recent builds.
+            Real Projects. Real Business Outcomes.
           </h2>
           <p className="text-muted mt-4">
-            Each project below follows the same lens: the problem, the build, and the
-            result the client actually cared about.
+            Over the past 8+ years, I've partnered with startups, SMEs, marketing agencies, telecommunications companies, eCommerce brands, and service-based businesses to design, develop, optimise, and maintain high-performing websites.
+
+Every project is approached with the same objective: understand the business challenge, build the right technical solution, and deliver measurable results. My focus extends beyond attractive design—I build websites that are fast, scalable, SEO-friendly, secure, and designed to generate leads and support business growth.
           </p>
         </RevealOnScroll>
 

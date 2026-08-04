@@ -24,8 +24,8 @@ export const site = {
 
 export const contact = {
   // ⚠️ EDIT ME — all four of these
-  email: "hello@glen.dev",
-  github: "https://github.com/your-username",
+  email: "glenmichael91@gmail.com",
+  github: "https://github.com/glen0091",
   linkedin: "https://linkedin.com/in/your-username",
   calendly: "https://cal.com/your-username",
 };
@@ -269,7 +269,7 @@ export const techStack = [
 export const projects = [
   {
     slug: "project-one",
-    name: "Add your project name",
+    name: "UT Global – International eSIM Platform It's seven days of full click hub access for just one dollar. Everything you need to learn and use AI has been kicked. Then I tried Monday dot com game over Monday dot com is super easy to use and knows how to do AI work. I use it for insights and action suggestions constantly, especially on those back to back meeting days and my team use Monday Sidekick to work up all kinds of marketing content for the different platforms. So stuff that takes my team hours is now done before they even open their laptop. All these AI features are built directly into Monday dot com and actually use our real data with Monday dot com. AI isn't some overcompensing future it's here it just works like actually saves us time and resources time works but it's that AI you'll love to use start a free trial today at Monday dot com radiance bottom tower radiant structure radiant bottom tower is four radian R scaling radiance median tower is under",
     category: "WordPress / WooCommerce", // e.g. "WordPress / WooCommerce" or "Next.js / SaaS"
     summary: "One or two sentences describing what this project is and who it's for.",
     challenge:
