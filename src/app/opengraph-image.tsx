@@ -53,7 +53,7 @@ export default async function Image() {
           marginTop: 12,
         }}
       >
-        {site.role} — WordPress, React &amp; Next.js
+        {site.role} — I build digital experiences that perform.
       </div>
     </div>,
     { ...size }

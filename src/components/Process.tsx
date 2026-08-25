@@ -9,20 +9,16 @@ export default function Process() {
     >
       <div className="container-page">
         <RevealOnScroll className="max-w-2xl">
-          <p className="section-label">Process</p>
-          <h2 className="font-display mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance md:text-4xl">
-            A predictable process, on purpose.
+          <p className="section-label">{process.eyebrow}</p>
+          <h2 className="font-display mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance md:text-5xl">
+            {process.heading}
           </h2>
-          <p className="text-muted mt-4">
-            The same seven stages run on every engagement, sized to the scope of the
-            project.
-          </p>
         </RevealOnScroll>
 
-        <div className="border-border-subtle bg-border-subtle mt-14 grid gap-px overflow-hidden rounded-2xl border sm:grid-cols-2 lg:grid-cols-4">
-          {process.map((item, i) => (
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-4">
+          {process.steps.map((item, i) => (
             <RevealOnScroll key={item.step} delay={i * 0.04} y={12}>
-              <div className="bg-surface h-full p-6">
+              <div className="border-border-subtle bg-surface hover:bg-surface-2 h-full border p-6 transition-colors">
                 <span className="text-accent-2/70 font-mono text-2xl font-semibold">
                   {item.step}
                 </span>

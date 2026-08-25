@@ -1,20 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search, ArrowRight, Command } from "lucide-react";
-import { nav, contact } from "@/lib/content";
+import { nav, contact, projects } from "@/lib/content";
 
 type Item = { label: string; hint: string; action: () => void };
 
 export default function CommandPalette() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-
-  const openPalette = () => {
-    setQuery("");
-    setOpen(true);
-  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -33,31 +30,69 @@ export default function CommandPalette() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
+
+  const go = (href: string) => {
+    setOpen(false);
+    if (href.startsWith("/#")) {
+      const id = href.slice(2);
+      // Navigate home first if needed, then scroll.
+      if (window.location.pathname !== "/") {
+        router.push(href);
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+    router.push(href);
+  };
 
   const items: Item[] = [
     ...nav.map((n) => ({
-      label: `Go to ${n.label}`,
-      hint: "Section",
-      action: () => {
-        document.querySelector(n.href)?.scrollIntoView({ behavior: "smooth" });
-      },
+      label: n.label,
+      hint: "Page",
+      action: () => go(n.href),
+    })),
+    ...projects.map((p) => ({
+      label: p.name,
+      hint: "Case study",
+      action: () => go(`/work/${p.slug}`),
     })),
     {
       label: "Copy email address",
       hint: "Contact",
-      action: () => navigator.clipboard.writeText(contact.email),
+      action: () => {
+        navigator.clipboard?.writeText(contact.email);
+        setOpen(false);
+      },
     },
-    {
-      label: "Open GitHub",
-      hint: "External",
-      action: () => window.open(contact.github, "_blank"),
-    },
-    {
-      label: "Open LinkedIn",
-      hint: "External",
-      action: () => window.open(contact.linkedin, "_blank"),
-    },
+    ...(contact.github
+      ? [
+          {
+            label: "Open GitHub",
+            hint: "External",
+            action: () => {
+              window.open(contact.github, "_blank");
+              setOpen(false);
+            },
+          },
+        ]
+      : []),
+    ...(contact.linkedin
+      ? [
+          {
+            label: "Open LinkedIn",
+            hint: "External",
+            action: () => {
+              window.open(contact.linkedin, "_blank");
+              setOpen(false);
+            },
+          },
+        ]
+      : []),
   ];
 
   const filtered = items.filter((i) =>
@@ -68,7 +103,10 @@ export default function CommandPalette() {
     <>
       <button
         data-cursor-hover
-        onClick={openPalette}
+        onClick={() => {
+          setQuery("");
+          setOpen(true);
+        }}
         className="border-border-strong bg-surface/80 text-muted hover:border-accent-2 hover:text-foreground fixed bottom-5 left-5 z-40 hidden items-center gap-2 rounded-full border px-4 py-2.5 text-xs backdrop-blur-md transition-colors md:bottom-8 md:left-8 md:flex"
         aria-label="Open command palette"
       >
@@ -105,21 +143,20 @@ export default function CommandPalette() {
                   autoFocus
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Type a command or search..."
+                  placeholder="Search pages, projects…"
                   className="text-foreground placeholder:text-muted-2 w-full bg-transparent text-sm focus:outline-none"
                 />
               </div>
               <ul className="max-h-72 overflow-y-auto p-2">
                 {filtered.length === 0 && (
-                  <li className="text-muted px-3 py-6 text-center text-sm">No results</li>
+                  <li className="text-muted px-3 py-6 text-center text-sm">
+                    No results
+                  </li>
                 )}
                 {filtered.map((item) => (
                   <li key={item.label}>
                     <button
-                      onClick={() => {
-                        item.action();
-                        setOpen(false);
-                      }}
+                      onClick={item.action}
                       className="text-foreground hover:bg-surface-2 flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm"
                     >
                       <span>{item.label}</span>

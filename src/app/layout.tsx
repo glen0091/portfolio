@@ -7,6 +7,9 @@ import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import CommandPalette from "@/components/CommandPalette";
 import ThemeScript from "@/components/ThemeScript";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import { contact } from "@/lib/content";
 
 // Self-hosted variable fonts (no runtime dependency on Google Fonts —
 // faster, more private, and works behind restrictive network policies).
@@ -34,11 +37,11 @@ const jetbrainsMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role} | WordPress, React & Next.js`,
-    template: `%s | ${site.name}`,
+    default: `${site.name} — ${site.role}`,
+    template: `%s — ${site.name}`,
   },
   description:
-    "Senior Web Developer with 8+ years building high-performance WordPress, WooCommerce, React and Next.js products for agencies, startups and enterprise clients across Australia and the US.",
+    "Glen Paredes is a senior web developer with 7+ years building high-performance websites, custom WordPress, WooCommerce, and modern React/Vite applications for businesses, agencies and international clients.",
   keywords: [
     "Senior Web Developer",
     "WordPress Developer",
@@ -65,7 +68,7 @@ export const metadata: Metadata = {
     siteName: `${site.name} — ${site.role}`,
     title: `${site.name} — ${site.role}`,
     description:
-      "Senior Web Developer building high-performance WordPress, WooCommerce, React and Next.js products.",
+      "Web development, UX and digital experiences built for businesses that want more than just a website.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     locale: "en_US",
   },
@@ -73,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} — ${site.role}`,
     description:
-      "Senior Web Developer building high-performance WordPress, WooCommerce, React and Next.js products.",
+      "Web development, UX and digital experiences built for businesses that want more than just a website.",
     images: ["/opengraph-image"],
   },
   icons: {
@@ -92,21 +95,47 @@ export const viewport: Viewport = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.name,
-  jobTitle: site.role,
-  url: site.url,
-  description:
-    "Senior Web Developer specialising in WordPress, WooCommerce, React and Next.js.",
-  knowsAbout: [
-    "WordPress Development",
-    "WooCommerce",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Technical SEO",
-    "Performance Optimisation",
-    "API Integrations",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#glen`,
+      name: site.name,
+      jobTitle: site.role,
+      url: site.url,
+      email: `mailto:${contact.email}`,
+      telephone: contact.phone,
+      description:
+        "Senior web developer with 7+ years building high-performance websites, custom WordPress, WooCommerce, and modern React/Vite applications.",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "PH",
+      },
+      knowsAbout: [
+        "Web Development",
+        "WordPress Development",
+        "WooCommerce",
+        "React",
+        "Vite",
+        "JavaScript",
+        "PHP",
+        "Technical SEO",
+        "Core Web Vitals",
+        "Performance Optimisation",
+        "API Integrations",
+        "Stripe",
+      ],
+      ...(contact.github || contact.linkedin
+        ? { sameAs: [contact.github, contact.linkedin].filter(Boolean) }
+        : {}),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: `${site.name} — ${site.role}`,
+      publisher: { "@id": `${site.url}/#glen` },
+      inLanguage: "en",
+    },
   ],
 };
 
@@ -135,7 +164,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ScrollProgress />
         <CustomCursor />
         <CommandPalette />
+        <Nav />
         {children}
+        <Footer />
         <BackToTop />
       </body>
     </html>

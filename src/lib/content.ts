@@ -2,328 +2,788 @@
  * ============================================================================
  * SITE CONTENT — single source of truth
  * ============================================================================
- * Everything on the site is driven from this file. Sections marked
- * "⚠️ EDIT ME" contain placeholders because they need information only you
- * have (real project outcomes, real client quotes, real contact details).
- * Nothing else in this file is placeholder — it's written from the brief
- * you gave. Replace the ⚠️ items and redeploy.
+ * Everything on the site is driven from this file. Items marked "⚠️ EDIT ME"
+ * need information only Glen has (real metrics, real dates, real testimonials).
+ * The rest is written from Glen's brief and is production copy.
+ *
+ * To add a project: append an object to `projects` following the Project type.
+ * To make it a featured case study on the homepage, set `featured: true`.
  * ============================================================================
  */
 
 export const site = {
-  name: "Glen",
+  name: "Glen Paredes",
+  firstName: "Glen",
   role: "Senior Web Developer",
-  tagline: "Senior Web Developer for WordPress & React/Next.js products",
-  url: "https://glen.dev", // ⚠️ EDIT ME — your production domain
-  // ⚠️ EDIT ME — replace with your real location + timezone
-  location: "Remote — available AU / US hours",
+  supportingRole: "Web Developer & Digital Experience Builder",
+  tagline:
+    "Senior web developer specialising in high-performance websites, custom WordPress, modern frontend engineering, eCommerce and digital optimisation.",
+  url: "https://glenparedes.com",
+  location: "Philippines — available remote, worldwide",
   availability: "available" as "available" | "limited" | "booked",
-  availabilityNote: "Taking on 1–2 new projects this quarter",
-  experienceYears: 8,
+  availabilityNote: "Available for new projects",
+  experienceYears: 7,
 };
 
 export const contact = {
-  // ⚠️ EDIT ME — all four of these
   email: "glenmichael91@gmail.com",
+  phone: "+63 952 468 3828",
   github: "https://github.com/glen0091",
-  linkedin: "https://linkedin.com/in/your-username",
-  calendly: "https://cal.com/your-username",
+  // Not shown — leave blank (add a URL later to enable).
+  linkedin: "",
+  // Set to a real endpoint (Formspree / Resend route / etc.) to enable the
+  // contact form. While blank, the form validates and shows a mailto fallback.
+  formEndpoint: "",
 };
 
+/** Primary navigation — real routes plus one in-page anchor for Expertise. */
 export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Work", href: "#work" },
-  { label: "Process", href: "#process" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Work", href: "/work" },
+  { label: "Expertise", href: "/#expertise" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
-export const heroRotatingRoles = [
-  "WordPress Development",
-  "React & Next.js Applications",
-  "WooCommerce Builds",
-  "API Integrations",
-  "Performance Optimisation",
-  "Technical SEO",
-];
+/* -------------------------------------------------------------------------- */
+/*  HERO                                                                       */
+/* -------------------------------------------------------------------------- */
+
+export const hero = {
+  eyebrow: "Senior Web Developer",
+  headline: "I build digital experiences that perform.",
+  supporting:
+    "Web development, UX and digital experiences built for businesses that want more than just a website.",
+  primaryCta: { label: "View my work", href: "/work" },
+  secondaryCta: { label: "Let's work together", href: "/contact" },
+  // The animated pipeline shown beside the headline.
+  pipeline: ["Design", "Build", "Optimise", "Ship"],
+};
 
 export const heroStats = [
-  { label: "Years in production", value: 8, suffix: "+" },
-  { label: "Avg. Lighthouse score shipped", value: 96, suffix: "" },
-  { label: "Projects delivered", value: 60, suffix: "+" }, // ⚠️ EDIT ME if you have a more precise number
+  { label: "Years building for production", value: 7, suffix: "+" },
+  // Verifiable: reflects the breadth of the stack shown across the site.
+  { label: "Technologies across the stack", value: 15, suffix: "+" },
+  { label: "Focus on Core Web Vitals", value: 100, suffix: "%" },
 ];
 
-export const about = {
-  eyebrow: "About",
-  heading: "Code that has to work, for businesses that can't afford downtime.",
-  paragraphs: [
-    "I'm Glen, a senior web developer with 8+ years building and shipping production websites and web applications — from high-traffic WordPress and WooCommerce builds to custom React and Next.js products.",
-    "My work sits at the intersection of two things most developers treat as separate: engineering discipline and business outcomes. I write clean, maintainable code, but I measure success in load times, conversion rates, and search rankings — the numbers a client's business actually feels.",
-    "I've spent most of my career working directly with agencies, startups, and business owners across Australia and the US, which means I'm fluent in both the technical and the commercial side of a project: scoping realistic timelines, communicating in plain language, and building things that are still easy to maintain a year after launch.",
+/* -------------------------------------------------------------------------- */
+/*  INTRO / VALUE PROPOSITION                                                  */
+/* -------------------------------------------------------------------------- */
+
+export const intro = {
+  eyebrow: "What I do",
+  heading: "I turn complex ideas into simple digital experiences.",
+  body: "I don't just build websites. I design, develop, optimise and maintain digital experiences that are built to perform — from marketing sites to transactional platforms.",
+  pillars: [
+    "Design",
+    "Development",
+    "Integration",
+    "Performance",
+    "SEO",
   ],
-  values: [
+};
+
+/* -------------------------------------------------------------------------- */
+/*  EXPERTISE                                                                  */
+/* -------------------------------------------------------------------------- */
+
+export const expertise = {
+  eyebrow: "Expertise",
+  heading: "What I do, in depth.",
+  intro:
+    "Seven years across the full lifecycle of a website — from the first wireframe to Core Web Vitals in production.",
+  categories: [
     {
-      title: "Performance is a feature",
+      title: "Frontend Development",
       description:
-        "A slow site is a broken site. Every build I ship is optimised for Core Web Vitals from day one, not patched afterward.",
+        "Modern, responsive interfaces built with performance and accessibility in mind.",
+      skills: [
+        "React",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "SCSS",
+        "Vite",
+        "Responsive UI",
+      ],
     },
     {
-      title: "Maintainable over clever",
+      title: "WordPress Development",
       description:
-        "Code is read far more than it's written. I optimise for the developer who inherits this project in two years — often, that's still me.",
+        "Custom builds beyond page-builder defaults — themes, plugins and CMS solutions.",
+      skills: [
+        "WordPress",
+        "Elementor",
+        "Bricks",
+        "Divi",
+        "Gutenberg",
+        "Breakdance",
+        "ACF",
+        "WooCommerce",
+        "Custom Themes",
+        "Custom Plugins",
+      ],
     },
     {
-      title: "Business results over busywork",
+      title: "Backend & Integrations",
       description:
-        "A feature that doesn't move a metric — traffic, conversion, retention — is a feature I'll question before I build it.",
+        "Connecting the front of a site to the systems that make it work.",
+      skills: [
+        "PHP",
+        "Node.js",
+        "MySQL",
+        "REST APIs",
+        "Third-party APIs",
+        "Stripe",
+        "Payment Systems",
+      ],
     },
     {
-      title: "Direct communication",
+      title: "Performance & SEO",
       description:
-        "No jargon, no status theatre. Clear scopes, honest timelines, and a straight answer when something isn't a good idea.",
+        "Technical optimisation that makes sites fast and findable.",
+      skills: [
+        "Technical SEO",
+        "Core Web Vitals",
+        "PageSpeed",
+        "GTmetrix",
+        "Image Optimisation",
+        "Caching",
+        "CDN",
+        "Cloudflare",
+      ],
+    },
+    {
+      title: "Infrastructure",
+      description:
+        "Deployment, DNS and hosting handled end to end.",
+      skills: [
+        "GitHub",
+        "Vercel",
+        "Cloudflare",
+        "DNS",
+        "Hosting",
+        "Deployment",
+      ],
     },
   ],
 };
 
-export const experienceTimeline = [
-  // ⚠️ EDIT ME — replace with your real role history (employers, dates, achievements)
-  {
-    period: "2022 — Present",
-    title: "Senior Web Developer, Freelance / Contract",
-    description:
-      "Add a 1–2 sentence summary of the clients or agencies you work with and the scope of projects (e.g. platform type, team size, stack).",
-    highlights: [
-      "Add a specific, measurable highlight (e.g. reduced LCP from 4.2s to 1.1s)",
-      "Add a second highlight (e.g. delivered N WooCommerce builds for AU retail clients)",
-    ],
-  },
-  {
-    period: "20XX — 20XX",
-    title: "Add your previous role title",
-    description: "Add a short description of this role and what you owned.",
-    highlights: ["Add a highlight", "Add a highlight"],
-  },
-];
+/* -------------------------------------------------------------------------- */
+/*  PROCESS                                                                    */
+/* -------------------------------------------------------------------------- */
 
-export const skillCategories = [
-  {
-    category: "Frontend",
-    skills: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "HTML",
-      "CSS",
-      "JavaScript",
-    ],
-  },
-  {
-    category: "WordPress",
-    skills: [
-      "WordPress Development",
-      "Elementor Pro",
-      "WooCommerce",
-      "PHP",
-      "Custom Themes & Plugins",
-    ],
-  },
-  {
-    category: "Data & APIs",
-    skills: ["MySQL", "API Integrations", "REST & Webhooks"],
-  },
-  {
-    category: "Performance & SEO",
-    skills: [
-      "Technical SEO",
-      "Website Optimisation",
-      "Performance Optimisation",
-      "Core Web Vitals",
-    ],
-  },
-  {
-    category: "Infrastructure",
-    skills: ["Cloudflare", "GitHub", "Vercel", "CI/CD"],
-  },
-];
+export const process = {
+  eyebrow: "How I work",
+  heading: "From first idea to final launch.",
+  steps: [
+    {
+      step: "01",
+      title: "Discover",
+      description: "Understand the business, audience and objectives.",
+    },
+    {
+      step: "02",
+      title: "Structure",
+      description:
+        "Plan content, UX, information architecture and user journeys.",
+    },
+    {
+      step: "03",
+      title: "Design",
+      description: "Create a visual system that supports the business.",
+    },
+    {
+      step: "04",
+      title: "Build",
+      description:
+        "Develop a responsive, accessible and maintainable website.",
+    },
+    {
+      step: "05",
+      title: "Integrate",
+      description:
+        "Connect APIs, payments, CMS, analytics and external services.",
+    },
+    {
+      step: "06",
+      title: "Optimise",
+      description:
+        "Improve performance, SEO, accessibility and Core Web Vitals.",
+    },
+    {
+      step: "07",
+      title: "Launch",
+      description: "Deploy, monitor and continuously improve.",
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/*  SERVICES                                                                   */
+/* -------------------------------------------------------------------------- */
 
 export const services = [
   {
+    title: "Website Design & Development",
+    description:
+      "High-end websites designed around business goals — not templates.",
+  },
+  {
     title: "WordPress Development",
     description:
-      "Custom themes, plugin development, and Elementor Pro builds engineered for speed and long-term maintainability — not page-builder bloat.",
+      "Custom WordPress builds, CMS solutions and WooCommerce stores.",
   },
   {
-    title: "WooCommerce",
-    description:
-      "Store builds and optimisation focused on checkout conversion, payment/shipping integrations, and catalogue performance at scale.",
+    title: "Frontend Development",
+    description: "Modern React, Vite and JavaScript interfaces.",
   },
   {
-    title: "Custom Web Applications",
+    title: "Website Redesign",
     description:
-      "React and Next.js applications built with TypeScript from the ground up — dashboards, portals, and product frontends.",
+      "Transform outdated websites into modern digital experiences.",
   },
   {
-    title: "API Integrations",
+    title: "Performance & SEO",
     description:
-      "Connecting your site to CRMs, payment gateways, booking systems, and internal tools with clean, documented integrations.",
+      "Technical optimisation, Core Web Vitals and search visibility.",
   },
   {
-    title: "Performance Optimisation",
+    title: "API & Platform Integration",
     description:
-      "Turning slow, bloated sites into fast ones — image pipelines, caching strategy, code splitting, and Core Web Vitals audits.",
-  },
-  {
-    title: "Technical SEO",
-    description:
-      "Site structure, schema markup, crawlability, and Core Web Vitals work that supports — not fights — your content and marketing SEO.",
-  },
-  {
-    title: "UI/UX",
-    description:
-      "Interface design and frontend implementation that balances a premium feel with genuinely usable, accessible interaction patterns.",
-  },
-  {
-    title: "Maintenance & Support",
-    description:
-      "Ongoing security updates, backups, monitoring, and incremental improvements so the site stays reliable after launch.",
-  },
-  {
-    title: "Consulting",
-    description:
-      "Technical audits and architecture advice for teams deciding between WordPress and a custom-built stack, or planning a migration.",
+      "Connect websites to external platforms, payment systems and APIs.",
   },
 ];
 
-export const process = [
+/* -------------------------------------------------------------------------- */
+/*  ABOUT                                                                      */
+/* -------------------------------------------------------------------------- */
+
+export const about = {
+  eyebrow: "About",
+  heading: "The developer behind the work.",
+  lead: "A web developer who sits between design, technology and business.",
+  paragraphs: [
+    "I'm Glen Paredes, a senior web developer with 7+ years building websites and digital experiences — from custom WordPress and WooCommerce stores to modern React and Vite applications with real transactional flows.",
+    "I enjoy solving practical problems through technology: building websites that are not only visually strong, but also fast, accessible and genuinely maintainable long after launch. I care as much about Core Web Vitals and clean architecture as I do about the way a page feels.",
+    "Most of my work is with businesses, agencies and international clients who need more than a brochure site — they need something that performs, converts and holds up under real-world use.",
+  ],
+  strengths: [
+    {
+      title: "Design meets engineering",
+      description:
+        "I work fluently across visual design and production code, so nothing gets lost in handover.",
+    },
+    {
+      title: "Performance as a default",
+      description:
+        "Core Web Vitals, image pipelines and caching are part of the build — not an afterthought.",
+    },
+    {
+      title: "Business-minded",
+      description:
+        "I measure success in load times, conversions and outcomes the client actually feels.",
+    },
+    {
+      title: "Built to maintain",
+      description:
+        "Clean, documented, version-controlled work that's still easy to extend a year later.",
+    },
+  ],
+};
+
+/* -------------------------------------------------------------------------- */
+/*  EXPERIENCE TIMELINE                                                        */
+/*  Periods are kept flexible (no fabricated dates). To add exact dates,       */
+/*  change each `period` (e.g. "2021 — Present").                              */
+/* -------------------------------------------------------------------------- */
+
+export const experienceTimeline = [
   {
-    step: "01",
-    title: "Discovery",
+    period: "Now",
+    title: "Founder & Lead Developer — UT Digital Studios",
     description:
-      "Understanding the business goal behind the build — not just the feature list.",
+      "Design and develop premium websites and digital experiences for clients across Australia and internationally.",
+    highlights: [
+      "Full-service web design, development and branding",
+      "WordPress, WooCommerce and modern frontend builds",
+      "Performance, SEO and ongoing maintenance",
+    ],
   },
   {
-    step: "02",
-    title: "Planning",
+    period: "Ongoing",
+    title: "Web Developer — UtukTel / Telecommunications",
     description:
-      "Scoping architecture, timeline, and success metrics before a line of code is written.",
+      "Development work on telecommunications and NBN-related digital experiences with transactional customer journeys.",
+    highlights: [
+      "Plan search, pricing systems and customer journeys",
+      "API integrations and transactional workflows",
+    ],
   },
   {
-    step: "03",
-    title: "Design",
+    period: "7+ years",
+    title: "Freelance / Contract Web Developer",
     description:
-      "Wireframes and UI direction reviewed with you before development begins.",
-  },
-  {
-    step: "04",
-    title: "Development",
-    description:
-      "Clean, typed, version-controlled code with regular checkpoints — no black-box weeks.",
-  },
-  {
-    step: "05",
-    title: "Testing",
-    description:
-      "Cross-browser, cross-device QA plus performance and accessibility audits.",
-  },
-  {
-    step: "06",
-    title: "Deployment",
-    description:
-      "Staged rollout with monitoring in place from the first minute in production.",
-  },
-  {
-    step: "07",
-    title: "Support",
-    description:
-      "A defined handover and, where needed, an ongoing maintenance arrangement.",
+      "Partnering with agencies, startups and business owners as a senior development resource.",
+    highlights: [
+      "eCommerce, API integrations and modern frontend development",
+      "White-label delivery for agencies",
+    ],
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/*  TECH STACK                                                                 */
+/* -------------------------------------------------------------------------- */
 
 export const techStack = [
   "React",
-  "Next.js",
-  "TypeScript",
-  "Tailwind CSS",
   "JavaScript",
+  "TypeScript",
+  "Vite",
+  "Next.js",
+  "Node.js",
+  "PHP",
   "WordPress",
   "WooCommerce",
-  "PHP",
+  "Tailwind CSS",
   "MySQL",
-  "HTML5",
-  "CSS3",
+  "Stripe",
   "GitHub",
-  "Vercel",
   "Cloudflare",
-  "Elementor Pro",
-  "REST APIs",
+  "Vercel",
 ];
 
-/**
- * ⚠️ EDIT ME — these are structural placeholders, not real case studies.
- * Replace title/summary/metrics/links with your actual project details.
- * The shape (challenge → solution → outcome) is what the design expects;
- * keep it when you swap in real content.
- */
-export const projects = [
+/* -------------------------------------------------------------------------- */
+/*  PROJECTS / CASE STUDIES                                                    */
+/* -------------------------------------------------------------------------- */
+
+export type ProjectOutcome = { label: string; value: string };
+export type ApproachStep = { phase: string; detail: string };
+
+export type Project = {
+  slug: string;
+  name: string;
+  industry: string;
+  year: string;
+  client: string;
+  role: string;
+  /** Short one-line summary for cards. */
+  summary: string;
+  /** Longer positioning paragraph for the case study hero. */
+  overview: string;
+  /** The problem that needed solving. */
+  problem: string;
+  /** What Glen personally handled. */
+  roleDetail: string;
+  services: string[];
+  technologies: string[];
+  approach: ApproachStep[];
+  /** Qualitative or real metrics. ⚠️ Replace values with real numbers where available. */
+  outcomes: ProjectOutcome[];
+  /** Gallery is placeholder framing — swap captions for real screenshots later. */
+  gallery: { caption: string }[];
+  liveUrl: string;
+  featured: boolean;
+  /** Layout weight on the homepage grid. */
+  size: "large" | "small";
+  /** Accent hue (degrees) used for the generated project visual. */
+  hue: number;
+};
+
+const standardApproach: ApproachStep[] = [
   {
-    slug: "project-one",
-    name: "UT Global – International eSIM Platform It's seven days of full click hub access for just one dollar. Everything you need to learn and use AI has been kicked. Then I tried Monday dot com game over Monday dot com is super easy to use and knows how to do AI work. I use it for insights and action suggestions constantly, especially on those back to back meeting days and my team use Monday Sidekick to work up all kinds of marketing content for the different platforms. So stuff that takes my team hours is now done before they even open their laptop. All these AI features are built directly into Monday dot com and actually use our real data with Monday dot com. AI isn't some overcompensing future it's here it just works like actually saves us time and resources time works but it's that AI you'll love to use start a free trial today at Monday dot com radiance bottom tower radiant structure radiant bottom tower is four radian R scaling radiance median tower is under",
-    category: "WordPress / WooCommerce", // e.g. "WordPress / WooCommerce" or "Next.js / SaaS"
-    summary: "One or two sentences describing what this project is and who it's for.",
-    challenge:
-      "Describe the problem the client came to you with — e.g. slow load times, an outdated stack, a conversion bottleneck.",
-    solution:
-      "Describe what you built and the key technical decisions — stack, architecture, integrations.",
-    outcomes: [
-      { label: "Load time", value: "Add real before → after" },
-      { label: "Lighthouse score", value: "Add real number" },
-      { label: "Business result", value: "e.g. conversion rate, traffic, revenue" },
-    ],
-    tech: ["WordPress", "PHP", "WooCommerce"],
-    liveUrl: "", // ⚠️ add live URL or leave blank to hide the button
-    githubUrl: "", // ⚠️ add repo URL or leave blank to hide the button
+    phase: "Discovery",
+    detail:
+      "Clarified the business goal, audience and success metrics before scoping the build.",
   },
   {
-    slug: "project-two",
-    name: "Add your project name",
-    category: "Next.js / Web App",
-    summary: "One or two sentences describing what this project is and who it's for.",
-    challenge: "Describe the problem this project solved.",
-    solution: "Describe your build — stack, architecture, decisions.",
-    outcomes: [
-      { label: "Performance", value: "Add real metric" },
-      { label: "Scale", value: "Add real metric" },
-      { label: "Business result", value: "Add real metric" },
-    ],
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    liveUrl: "",
-    githubUrl: "",
+    phase: "UX & Design",
+    detail:
+      "Structured content and user journeys, then designed a visual system to match.",
   },
   {
-    slug: "project-three",
-    name: "Add your project name",
-    category: "API Integration",
-    summary: "One or two sentences describing what this project is and who it's for.",
-    challenge: "Describe the integration problem.",
-    solution: "Describe the systems you connected and how.",
-    outcomes: [
-      { label: "Time saved", value: "Add real metric" },
-      { label: "Reliability", value: "Add real metric" },
-      { label: "Business result", value: "Add real metric" },
-    ],
-    tech: ["React", "REST APIs", "MySQL"],
-    liveUrl: "",
-    githubUrl: "",
+    phase: "Development",
+    detail:
+      "Built a responsive, accessible and maintainable front end with clean architecture.",
+  },
+  {
+    phase: "Integration",
+    detail:
+      "Connected the CMS, third-party services and analytics required to run the site.",
+  },
+  {
+    phase: "Optimisation & Launch",
+    detail:
+      "Tuned performance, SEO and Core Web Vitals, then deployed with monitoring in place.",
   },
 ];
 
-/**
- * ⚠️ EDIT ME — empty by default on purpose. No fabricated quotes.
- * Add objects here in the same shape once you have real client testimonials;
- * the section renders an honest empty state until then.
- */
+export const projects: Project[] = [
+  {
+    slug: "ut-global",
+    name: "UT Global",
+    industry: "Travel Connectivity / eSIM",
+    year: "2024",
+    client: "UT Global",
+    role: "Frontend Development, Integrations, Performance",
+    summary:
+      "International eSIM and travel connectivity platform with real transactional flows.",
+    overview:
+      "UT Global is an international eSIM and travel connectivity platform that lets travellers buy and manage data plans across countries. It's a real transactional product — pricing, currency, payments and account functionality all have to work flawlessly.",
+    problem:
+      "Travellers needed a fast, trustworthy way to browse international eSIM plans, see accurate localised pricing, and complete a purchase without friction — on any device, anywhere in the world.",
+    roleDetail:
+      "I built the React / Vite frontend and the purchasing experience end to end: the plan browsing UX, international pricing with currency conversion, payment integration, responsive layouts, and the performance and SEO work needed for a global, transactional site.",
+    services: [
+      "Frontend Development",
+      "UX",
+      "Payment Integration",
+      "Performance",
+      "SEO",
+    ],
+    technologies: [
+      "React",
+      "Vite",
+      "JavaScript",
+      "Stripe",
+      "REST APIs",
+      "Cloudflare",
+      "Vercel",
+    ],
+    approach: [
+      {
+        phase: "Discovery",
+        detail:
+          "Mapped the purchasing journey across countries, currencies and plan types.",
+      },
+      {
+        phase: "UX & Frontend",
+        detail:
+          "Designed and built the React / Vite eSIM purchasing experience with responsive layouts.",
+      },
+      {
+        phase: "Pricing & Currency",
+        detail:
+          "Implemented international pricing and currency conversion for a global audience.",
+      },
+      {
+        phase: "Payments & APIs",
+        detail:
+          "Integrated Stripe payments and third-party APIs behind the transactional flows.",
+      },
+      {
+        phase: "Optimise & Ship",
+        detail:
+          "Tuned Core Web Vitals and SEO, deployed on Vercel behind Cloudflare.",
+      },
+    ],
+    outcomes: [
+      { label: "Experience", value: "End-to-end eSIM purchasing" },
+      { label: "Reach", value: "International pricing & currency" },
+      { label: "Performance", value: "Optimised for Core Web Vitals" },
+    ],
+    gallery: [
+      { caption: "Plan browsing & international pricing" },
+      { caption: "Checkout & payment flow" },
+      { caption: "Account & plan management" },
+    ],
+    liveUrl: "https://utglobal.app/",
+    featured: true,
+    size: "large",
+    hue: 245,
+  },
+  {
+    slug: "ogawa-world",
+    name: "Ogawa World",
+    industry: "E-commerce / Wellness",
+    year: "2024",
+    client: "OGAWA",
+    role: "Frontend Development, UI/UX, E-commerce",
+    summary:
+      "Premium e-commerce experience for OGAWA's massage chairs and wellness products.",
+    overview:
+      "Ogawa World is the online home for OGAWA's premium massage chairs and wellness products — a content-rich e-commerce experience built to showcase high-consideration products and guide customers toward buying online or finding a store.",
+    problem:
+      "Premium wellness products are a considered purchase. The site needed to present massage chairs with the depth of information buyers expect, keep a large catalogue easy to browse on any device, and run promotional campaigns without losing clarity or speed.",
+    roleDetail:
+      "I worked on the front-end build and UI/UX — responsive product presentation, campaign layouts (anniversary sale, trade-in, new arrivals), catalogue browsing, and the shop and store-locator journeys on a WordPress-based e-commerce stack.",
+    services: [
+      "Frontend Development",
+      "UI/UX Implementation",
+      "E-commerce",
+      "Responsive Development",
+      "Performance",
+    ],
+    technologies: ["WordPress", "PHP", "JavaScript", "HTML", "CSS"],
+    approach: [
+      {
+        phase: "Discovery",
+        detail:
+          "Understood the product range, campaigns and how customers research a high-value purchase.",
+      },
+      {
+        phase: "UI/UX",
+        detail:
+          "Designed product-first layouts and conversion-focused journeys toward purchase and store discovery.",
+      },
+      {
+        phase: "E-commerce Build",
+        detail:
+          "Implemented the catalogue, product presentation and promotional campaign pages on WordPress.",
+      },
+      {
+        phase: "Responsive & Performance",
+        detail:
+          "Tuned the experience for mobile and desktop, keeping media-rich pages fast.",
+      },
+      {
+        phase: "Launch",
+        detail: "Shipped, with ongoing campaign and catalogue updates.",
+      },
+    ],
+    outcomes: [
+      { label: "Experience", value: "Premium product presentation" },
+      { label: "Commerce", value: "Catalogue, cart & store locator" },
+      { label: "Delivery", value: "Responsive across devices" },
+    ],
+    gallery: [
+      { caption: "Homepage & campaigns" },
+      { caption: "Product catalogue" },
+      { caption: "Product detail & purchase" },
+    ],
+    liveUrl: "https://ogawaworld.net/",
+    featured: true,
+    size: "small",
+    hue: 12,
+  },
+  {
+    slug: "utuk-telecom",
+    name: "UT UK Telecom",
+    industry: "Telecommunications",
+    year: "2024",
+    client: "Utuktel",
+    role: "Frontend Development, UI/UX, Conversion",
+    summary:
+      "Australian internet provider site turning complex NBN and mobile plans into clear, comparable pricing.",
+    overview:
+      "UT UK Telecom (Utuktel) is an Australian-owned internet and mobile provider. The site turns a broad range of NBN and mobile plans into transparent, comparable pricing that customers can act on with confidence — backed by a customer portal.",
+    problem:
+      "Telco pricing is notoriously confusing. The site had to present NBN and mobile plans across residential, business and Opticomm segments with transparent, comparable pricing, and move visitors confidently toward signing up — on mobile as much as desktop.",
+    roleDetail:
+      "I built the responsive front end and UI/UX: the plan comparison tables, segmented pricing (residential / business / Opticomm), promotional intro offers, conversion-focused sign-up paths, and the links into the customer portal.",
+    services: [
+      "Frontend Development",
+      "UI/UX Implementation",
+      "Conversion-focused Design",
+      "Responsive Development",
+    ],
+    technologies: ["JavaScript", "HTML", "CSS", "Responsive UI"],
+    approach: [
+      {
+        phase: "Discovery",
+        detail:
+          "Mapped the plan range across residential, business and Opticomm segments.",
+      },
+      {
+        phase: "UI/UX",
+        detail:
+          "Designed clear, comparable pricing tables and conversion-focused sign-up paths.",
+      },
+      {
+        phase: "Frontend Build",
+        detail:
+          "Built responsive, mobile-first layouts and interactive plan presentation.",
+      },
+      {
+        phase: "Conversion",
+        detail:
+          "Structured promotions and calls-to-action to guide visitors toward signing up.",
+      },
+      {
+        phase: "Launch",
+        detail: "Shipped with links into the customer portal and ongoing updates.",
+      },
+    ],
+    outcomes: [
+      { label: "Clarity", value: "Transparent plan comparison" },
+      { label: "Segments", value: "Residential · Business · Opticomm" },
+      { label: "Delivery", value: "Mobile-first, conversion-focused" },
+    ],
+    gallery: [
+      { caption: "NBN plan comparison" },
+      { caption: "Mobile plans & pricing" },
+      { caption: "Sign-up & customer portal" },
+    ],
+    liveUrl: "https://utuktel.com.au/",
+    featured: true,
+    size: "small",
+    hue: 205,
+  },
+  {
+    slug: "ut-digital-studios",
+    name: "UT Digital Studios",
+    industry: "Digital Studio",
+    year: "2024",
+    client: "UT Digital Studios",
+    role: "Design, Development, Branding",
+    summary:
+      "My digital studio — web design, development and branding for client work.",
+    overview:
+      "UT Digital Studios is my digital studio: the home for design, development, branding and digital strategy work delivered to clients. The site itself is a statement of the studio's standard of work.",
+    problem:
+      "The studio needed a digital presence that communicated senior-level capability across design and development, and gave prospective clients confidence in the work.",
+    roleDetail:
+      "I led design and development end to end — the visual identity direction, the WordPress and frontend build, and the digital strategy behind how the studio presents its services.",
+    services: ["Web Design", "Web Development", "Branding", "Digital Strategy"],
+    technologies: ["WordPress", "PHP", "JavaScript", "HTML", "CSS"],
+    approach: standardApproach,
+    outcomes: [
+      { label: "Positioning", value: "Studio-grade presentation" },
+      { label: "Scope", value: "Design → build → brand" },
+      { label: "Stack", value: "Custom WordPress" },
+    ],
+    gallery: [
+      { caption: "Studio homepage" },
+      { caption: "Services & capabilities" },
+      { caption: "Selected client work" },
+    ],
+    liveUrl: "https://www.utdigital.au/",
+    featured: false,
+    size: "small",
+    hue: 200,
+  },
+  {
+    slug: "avsar-medical",
+    name: "Avsar Medical",
+    industry: "Healthcare / Medical",
+    year: "2024",
+    client: "Avsar Medical Services",
+    role: "WordPress Development, UI/UX",
+    summary:
+      "Professional healthcare site for a Victorian event medical and first aid provider.",
+    overview:
+      "Avsar Medical Services provides on-site medical teams, first aid stations and event risk assessment across Victoria. The website presents the service professionally and builds trust with event organisers looking for reliable medical cover.",
+    problem:
+      "Event organisers choosing a medical provider need to trust them quickly. The site had to communicate credibility, clearly present the services, and make it easy to get in touch — with a clean, professional, responsive presentation.",
+    roleDetail:
+      "I developed the WordPress site with a focus on UI/UX, responsive layouts, clear service presentation, performance and a professional, accessible design.",
+    services: [
+      "WordPress Development",
+      "UI/UX Implementation",
+      "Responsive Development",
+      "Performance",
+      "Accessibility",
+    ],
+    technologies: ["WordPress", "PHP", "JavaScript", "HTML", "CSS"],
+    approach: standardApproach,
+    outcomes: [
+      { label: "Presentation", value: "Professional & trustworthy" },
+      { label: "Focus", value: "Clear service communication" },
+      { label: "Build", value: "Responsive WordPress" },
+    ],
+    gallery: [
+      { caption: "Homepage & services" },
+      { caption: "About & credibility" },
+      { caption: "Contact & enquiry" },
+    ],
+    liveUrl: "https://avsarmedical.au/",
+    featured: false,
+    size: "small",
+    hue: 175,
+  },
+  {
+    slug: "avsar-disability",
+    name: "Avsar Disability",
+    industry: "Disability / Healthcare Services",
+    year: "2023",
+    client: "Avsar Disability Service",
+    role: "WordPress Development, Accessibility, UI/UX",
+    summary:
+      "Accessibility-conscious website for a Melbourne-based disability services provider.",
+    overview:
+      "Avsar Disability Service is a Melbourne-based NDIS-style provider offering personalised support across self-care, domestic and community participation. The site is built with accessibility and a clear information architecture at its core, so people can quickly find the support they need.",
+    problem:
+      "A disability services provider needs a site that's genuinely accessible and easy to navigate — with content structured across services, FAQs and a blog so visitors can find the right support and get in touch.",
+    roleDetail:
+      "I developed the WordPress site with an accessibility-conscious approach: a clear multi-page information architecture (services, team, FAQ, blog), responsive layouts, readable typography and a build that's straightforward to maintain.",
+    services: [
+      "Accessibility-Conscious Design",
+      "WordPress Development",
+      "Responsive Development",
+      "Information Architecture",
+      "UI/UX Implementation",
+    ],
+    technologies: ["WordPress", "Elementor", "PHP", "JavaScript", "HTML", "CSS"],
+    approach: standardApproach,
+    outcomes: [
+      { label: "Priority", value: "Accessibility-conscious" },
+      { label: "Structure", value: "Clear multi-page IA" },
+      { label: "Build", value: "Responsive WordPress" },
+    ],
+    gallery: [
+      { caption: "Homepage & services overview" },
+      { caption: "Services & support information" },
+      { caption: "FAQ, blog & contact" },
+    ],
+    liveUrl: "https://avsardisability.com.au/",
+    featured: false,
+    size: "small",
+    hue: 160,
+  },
+  {
+    slug: "avsar-group",
+    name: "Avsar Group",
+    industry: "Corporate",
+    year: "2023",
+    client: "Avsar Group",
+    role: "WordPress Development, UI/UX",
+    summary:
+      "Corporate website development with a professional, performance-focused presentation.",
+    overview:
+      "Avsar Group is a corporate website built to present the business professionally and perform reliably. It's a clean, responsive WordPress build focused on clarity and credibility.",
+    problem:
+      "The business needed a corporate presence that felt established and trustworthy, loaded quickly, and was easy to maintain as the organisation grew.",
+    roleDetail:
+      "I developed the corporate WordPress site with a focus on responsive design, UI/UX, performance and a professional business presentation.",
+    services: [
+      "Corporate Website",
+      "WordPress Development",
+      "Responsive Design",
+      "Performance",
+    ],
+    technologies: ["WordPress", "PHP", "JavaScript", "HTML", "CSS"],
+    approach: standardApproach,
+    outcomes: [
+      { label: "Presentation", value: "Professional & credible" },
+      { label: "Build", value: "Responsive WordPress" },
+      { label: "Focus", value: "Performance & UX" },
+    ],
+    gallery: [
+      { caption: "Corporate homepage" },
+      { caption: "Services & about" },
+      { caption: "Contact & enquiry" },
+    ],
+    liveUrl: "https://avsar.au/",
+    featured: false,
+    size: "small",
+    hue: 210,
+  },
+];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+
+export function getProject(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  TESTIMONIALS                                                               */
+/*  ⚠️ EDIT ME — empty on purpose. No fabricated quotes. Add real ones here.   */
+/* -------------------------------------------------------------------------- */
+
 export const testimonials: {
   quote: string;
   author: string;
@@ -331,27 +791,35 @@ export const testimonials: {
   company: string;
 }[] = [];
 
-export const blogPlaceholder = {
-  eyebrow: "Writing",
-  heading: "Notes on WordPress, React, and building fast web products.",
-  description:
-    "Long-form articles on performance, architecture, and lessons from client work — coming soon.",
-};
+/* -------------------------------------------------------------------------- */
+/*  CONTACT FORM OPTIONS                                                       */
+/* -------------------------------------------------------------------------- */
 
-export const faqs = [
-  {
-    question: "What's your typical engagement length?",
-    answer:
-      "It depends on scope — a WordPress build is often 2–6 weeks, a custom application can run several months. Ongoing maintenance and retainer arrangements are available for either.",
-  },
-  {
-    question: "Do you work with agencies or only direct clients?",
-    answer:
-      "Both. I regularly work white-label with agencies as a senior development resource, and directly with startups and business owners.",
-  },
-  {
-    question: "What time zones do you work with?",
-    answer:
-      "I structure my schedule to overlap with Australian and US business hours — get in touch and we'll find a working rhythm.",
-  },
+export const projectTypes = [
+  "New website",
+  "Website redesign",
+  "WordPress / WooCommerce",
+  "React / frontend app",
+  "Performance & SEO",
+  "API / integration",
+  "Other",
 ];
+
+export const budgetRanges = [
+  "Under $5k",
+  "$5k – $15k",
+  "$15k – $30k",
+  "$30k+",
+  "Not sure yet",
+];
+
+/* -------------------------------------------------------------------------- */
+/*  CTA                                                                        */
+/* -------------------------------------------------------------------------- */
+
+export const cta = {
+  heading: "Have a project in mind?",
+  body: "Whether you're launching something new, redesigning an existing website or solving a complex web problem, let's talk.",
+  primary: { label: "Start a conversation", href: "/contact" },
+  secondary: { label: "View my work", href: "/work" },
+};
